@@ -116,6 +116,7 @@ binlog_format=ROW
 [galera]
 wsrep_on=ON
 wsrep_cluster_name=my_galera
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
 wsrep_node_name=node1
 wsrep_node_address=node1
 wsrep_cluster_address=gcomm://node1,node2,node3
