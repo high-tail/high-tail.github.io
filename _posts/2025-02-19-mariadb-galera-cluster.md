@@ -7,13 +7,15 @@ mermaid: true
 categories: [Tech, Database]
 tags: [database]
 ---
-## Object
+## Object & Background
 To understand MariaDB Galera Cluster, I want to have my local Galera Cluster environment.
-Because of this environment, we can test Galera without any inquires to DBA.
+This post shows that how I set up local Galera Cluster with docker-compose.
+
+Because of this environment, I can test Galera Cluster function (e.g., how replication work, what if I change some setting, and so forth) without any inquires to DBA.
 
 ## Prerequisites
 
-A bit ofknowledge about docker, docker-compose, and MySQL/MariaDB
+A bit ofknowledge about docker, docker-compose, and MariaDB(MySQL).
 
 > My Environment
 >
@@ -81,7 +83,7 @@ services:
     volumes:
       - ./docker/db/conf/node1.cnf:/etc/mysql/conf.d/my.cnf # mount confing
     environment:
-      MARIADB_ROOT_PASSWORD: roo
+      MARIADB_ROOT_PASSWORD: root
       MARIADB_DATABASE: root
     command: --wsrep-new-cluster # Start as a starter of Galera Cluster
   node2:
@@ -154,10 +156,11 @@ MariaDB [(none)]> SHOW GLOBAL STATUS LIKE 'wsrep_cluster_size';
 +--------------------+-------+
 ```
 
-#### Now you're redy!
+#### Now you're ready!
+If you can see wsrep_cluster_size = 3, now you are ready to use local MariaDB Galera Cluster!
 You can test how MariaDB Galera Cluster work with this environment!
 
-If you saw value is not 3, please check logs
+If you saw value is not 3, please check logs with the following command.
 
 ```bash
 # You can specify container with node1 or node2 or node3
@@ -165,6 +168,9 @@ docker-compose logs -f
 ```
 
 ## Next Plan: Set up for DevOps
+Now we have a very simple local MariaDB Galera Cluster.
+Next plan is to add Proxy & Monitor services for DevOps.
+
 - [HAProxy](https://www.haproxy.com/documentation/haproxy-configuration-manual/latest/): L4 Load Balancer
 - [ProxySQL](https://proxysql.com/documentation/): Read and Write Splitting
 - [Grafana](https://grafana.com/docs/)
