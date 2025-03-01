@@ -1,17 +1,15 @@
 ---
 title: Local MariaDB Galera Cluster with docker-compose
 date: 2025-02-19 20:30:00 +0900
-description: Hands on setting up local MariaDB Galera Cluster with docker-compose
+description: Hands-on setting up local MariaDB Galera Cluster with docker-compose
 comments: false
 mermaid: true
 categories: [Tech, Database]
 tags: [database]
 ---
-## Object & Background
-To understand MariaDB Galera Cluster, I want to have my local Galera Cluster environment.
-This post shows that how I set up local Galera Cluster with docker-compose.
 
-Because of this environment, I can test Galera Cluster function (e.g., how replication work, what if I change some setting, and so forth) without any inquires to DBA.
+## Objective
+In this post, we'll walk through the process of deploying MariaDB Galera Cluster using Docker Compose.
 
 ## Prerequisites
 
@@ -130,7 +128,8 @@ FROM mariadb:latest
 RUN apt-get update && apt-get install -y vim galera-4
 ```
 
-### How to start
+### Start the Cluster
+To start the cluster, run the following commands:
 ```bash
 # 1. Build containers
 docker-compose build
@@ -143,6 +142,7 @@ docker-compose exec node1 bash # or node2, node3
 ```
 
 #### Check Status
+To check the cluster status, login to MariaDB and run the following query:
 ```bash
 # 1. Login to MariaDB
 mariadb -uroot -proot
@@ -177,8 +177,9 @@ Next plan is to add Proxy & Monitor services for DevOps.
   - [Prometheus](https://prometheus.io/docs/introduction/overview/)
   - [mysqld_exporter](https://github.com/prometheus/mysqld_exporter)
 
+## Links
 <!-- Footnotes -->
-[^fn-nth-1]: [Repository](https://github.com/high-tail/local-galera-cluster)
+[^fn-nth-1]: [Entire Code](https://github.com/high-tail/local-galera-cluster/tree/initial)
 <!-- Links -->
 
 [Galera Cluster]: https://galeracluster.com/
