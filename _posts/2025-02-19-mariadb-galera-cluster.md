@@ -5,7 +5,7 @@ description: Hands-on setting up local MariaDB Galera Cluster with docker-compos
 comments: false
 mermaid: true
 categories: [Tech, Database]
-tags: [database]
+tags: [database, local galera cluster]
 ---
 
 ## Objective

@@ -14,13 +14,15 @@ timezone: Asia/Tokyo
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Personal Blog # the main title
+title: 'From Codes to Books: A Personal Journey' # the main title
 
-tagline: Software engineer / Book lover # it will display as the subtitle
+tagline: >- # it will display as the subtitle
+  Software engineer / Book lover
+  I want to explor the worlds of software and stories.
 
 description: >- # used by seo meta and the atom feed
-  A personal blog by Kyohei Takao, a software engineer at Japan.
-  Main topic are about software development, books, and life.
+  A personal blog by Kyohei Takao, a software engineer in Japan.
+  Main topics are about software development, books, and life.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.

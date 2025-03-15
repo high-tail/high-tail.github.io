@@ -4,8 +4,8 @@ date: 2025-03-01 10:00:00 +0900
 description: Hands-on setting up local ProxySQL Cluster with docker-compose
 comments: false
 mermaid: true
-categories: [Tech, Database]
-tags: [database]
+categories: [Tech, SQL]
+tags: [proxysql, local galera cluster]
 ---
 
 ## Objective
@@ -53,12 +53,12 @@ For instance, assign one node as a writer node and so on.
 ├──docker
 │   ├──db
 │   │   └──initdb.d
-│   │       └──0_init.sql
+│   │       └──0_init.sql # New
 │   │
 │   └──proxysql
 │       └──conf
-│           └──proxysql.cnf
-└── compose.yml
+│           └──proxysql.cnf # New
+└── compose.yml # Update
 ```
 
 #### **`compose.yml`**
@@ -321,7 +321,7 @@ To check the ProxySQL settings for Galera Cluster status, login to ProxySQL and 
 mysql -uradmin -pradmin -P6032
 
 # 2. Check Galera Cluster Status
-ySQL [(none)]> select * from mysql_servers;
+MySQL [(none)]> select * from mysql_servers;
 +--------------+----------+------+-----------+--------+--------+-------------+-----------------+---------------------+---------+----------------+---------+
 | hostgroup_id | hostname | port | gtid_port | status | weight | compression | max_connections | max_replication_lag | use_ssl | max_latency_ms | comment |
 +--------------+----------+------+-----------+--------+--------+-------------+-----------------+---------------------+---------+----------------+---------+
