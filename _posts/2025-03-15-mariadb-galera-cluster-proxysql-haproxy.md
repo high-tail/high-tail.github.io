@@ -145,7 +145,7 @@ mysql> show variables like 'hostname';
 ```
 After this connection test, we will see HAProxy WebUI's sessions count had increased.
 
-#### Now we're redy!
+#### Now we're ready!
 You can connect MariaDB Galera Cluster via HAProxy and ProxySQL Cluster.
 
 ## Next Plan: Set up for DevOps

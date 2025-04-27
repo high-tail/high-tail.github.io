@@ -362,7 +362,7 @@ MySQL [(none)]> select hostgroup_id, hostname, port, gtid_port, status, weight f
 
 ```
 
-#### Now we're redy!
+#### Now we're ready!
 We have MariaDB Galera Cluster with ProxySQL Cluster.
 Next plan is to set up HAProxy as L4 load balancer.
 I want to connect this environemnt via HAProxy.
