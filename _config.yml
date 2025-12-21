@@ -71,6 +71,11 @@ analytics:
   fathom:
     id: # fill in your Fathom Site ID
 
+# Google AdSense settings
+adsense:
+  client: ca-pub-5443449654829293 # e.g. ca-pub-XXXXXXXXXXXXXXXX
+  slot: # optional default ad slot id
+
 # Page views settings
 pageviews:
   provider: # now only supports 'goatcounter'
