@@ -1,12 +1,11 @@
 FROM ruby:latest
 
-RUN gem install jekyll -v 4.3.4
-
 WORKDIR /srv/jekyll
 
-COPY . .
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
 
-RUN bundle install & bundle update
+COPY . .
 
 EXPOSE 4000
 

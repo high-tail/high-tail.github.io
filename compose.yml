@@ -2,7 +2,7 @@ services:
   app:
     build:
       dockerfile: Dockerfile
-    command: jekyll serve --host 0.0.0.0 -w --force_polling --trace
+    command: bundle exec jekyll serve --host 0.0.0.0 -w --force_polling --trace
     volumes:
       - .:/srv/jekyll
     ports:
