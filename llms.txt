@@ -1,0 +1,41 @@
+# From Codes to Books: A Personal Journey
+> Software engineer / Book lover. I want to explor the worlds of software and stories.
+
+A personal blog by Kyohei Takao, a software engineer in Japan.
+Main topics are about software development, books, and life.
+
+## Site Details
+- URL: https://high-tail.github.io
+- Generator: Jekyll (Chirpy Theme)
+- Author: Kyohei Takao
+
+## Socials
+- GitHub: https://github.com/high-tail
+- LinkedIn: https://www.linkedin.com/in/username
+
+## Blog Posts
+
+### Local MariaDB Galera Cluster Series
+A hands-on series setting up a local Galera cluster with HAProxy, ProxySQL, and Monitoring.
+
+- **Local HAProxy, ProxySQL Cluster, Monitoring and MariaDB Galera Cluster**
+  - Date: 2025-04-27
+  - URL: https://high-tail.github.io/posts/mariadb-galera-cluster-final/
+  - Description: Hands-on setting up local MariaDB Galera Cluster and monitoring with docker-compose.
+
+- **MariaDB Galera Cluster with ProxySQL and HAProxy**
+  - Date: 2025-03-15
+  - URL: https://high-tail.github.io/posts/mariadb-galera-cluster-proxysql-haproxy/
+
+- **MariaDB Galera Cluster with ProxySQL**
+  - Date: 2025-03-01
+  - URL: https://high-tail.github.io/posts/mariadb-galera-cluster-proxysql/
+
+- **MariaDB Galera Cluster**
+  - Date: 2025-02-19
+  - URL: https://high-tail.github.io/posts/mariadb-galera-cluster/
+
+## Technical Context
+This site is built with Jekyll and the Chirpy theme.
+The source code is hosted on GitHub.
+Posts are written in Markdown with YAML Front Matter.
