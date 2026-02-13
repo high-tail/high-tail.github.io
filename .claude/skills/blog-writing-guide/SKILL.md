@@ -1,97 +1,70 @@
 ---
 name: blog-writing-guide
-description: Expert guide for creating, structuring, and improving blog posts. Use this when the user wants to write a post, improve content, or ensure adherence to project standards (Jekyll Chirpy theme).
-version: 0.1.1
+description: Create, structure, and improve blog posts following Jekyll Chirpy theme standards. Use for writing new posts, auditing drafts, or organizing content.
 ---
 
 # Blog Writing Guide
 
-This skill provides expert guidance for creating high-quality blog posts that match the project's specific requirements (Jekyll Chirpy theme).
+This skill guides you in creating high-quality blog posts that adhere to the project's Jekyll Chirpy theme standards.
 
-## Core Requirements (MUST Follow)
+## Critical Constraints (MUST Follow)
 
-1.  **File Naming**: Always use `YYYY-MM-DD-kebab-case-title.md` in `_posts/`.
-2.  **Front Matter**: Every post must include `title`, `date`, `description`, `categories`, and `tags`.
-3.  **Theme Features**: Use Chirpy's callouts (`{: .prompt-tip }`) and Mermaid support where appropriate.
+1.  **File Naming**: ALWAYS use `_posts/YYYY-MM-DD-kebab-case-title.md`.
+2.  **Front Matter**: MUST include `title`, `date`, `categories` (list), and `tags` (list).
+3.  **Theme Features**: Use Chirpy callouts for emphasis:
+    *   `{: .prompt-tip }` (Green)
+    *   `{: .prompt-info }` (Blue)
+    *   `{: .prompt-warning }` (Yellow)
+    *   `{: .prompt-danger }` (Red)
+4.  **Diagrams**: Use `mermaid: true` in front matter if using Mermaid diagrams.
 
-## Blog Post Structure
+## Workflow: Creating a New Post
 
-A well-structured blog post follows this pattern (see `examples/blog-outline-template.md`):
+Follow this sequence to ensure quality and consistency.
 
-1.  **Compelling Introduction**: Hook the reader and state the purpose.
-2.  **Prerequisites/Context**: detailed environment or knowledge needed (use callouts).
-3.  **Clear Main Body**: Logical sections with H2/H3 headings.
-4.  **Actionable Conclusion**: Summary and next steps.
+### 1. Planning & Structure
+*   **Analyze**: Identify the target audience and key takeaways.
+*   **Structure**:
+    1.  **Introduction**: Hook the reader, state the problem/goal.
+    2.  **Prerequisites**: Define needed environment/knowledge (use `.prompt-info`).
+    3.  **Body**: Logical steps/sections using H2 (`##`) and H3 (`###`).
+    4.  **Conclusion**: Summary and actionable next steps.
+*   *Reference*: See `examples/blog-outline-template.md` for a concrete outline structure.
 
-## Writing Style Guidelines
+### 2. Drafting Content
+*   **Tone**: Professional yet conversational. Speak directly to the reader ("You can...").
+*   **Readability**:
+    *   Max 3-5 sentences per paragraph.
+    *   Use bullet points for lists.
+    *   Use active voice.
+*   **SEO**: Include keywords naturally in H2 headers and the first paragraph.
+*   *Reference*: See `references/style-tips.md` for detailed voice/tone guidelines.
 
-### Voice and Tone
-- Use conversational yet professional tone
-- Write as if speaking directly to the reader
-- Keep sentences clear and concise
-- Avoid overly complex jargon unless targeting experts
+### 3. Formatting & Refinement
+*   **Images**: Use `![Alt text](/assets/img/path/to/image.png)`.
+*   **Code**: Use fenced code blocks with language identifiers (e.g., ````bash`).
+*   **Links**: Use internal links to other posts where relevant.
+*   *Reference*: See `references/seo-best-practices.md` for optimization details.
 
-### Paragraph Structure
-- Keep paragraphs to 3-5 sentences maximum
-- Each paragraph should focus on one main idea
-- Use transition words to connect ideas smoothly
+### 4. Validation
+*   **Run Tool**: Execute the validation script to check for common errors.
+    *   Command: `python3 ./tools/validate_blog_post.py _posts/YOUR_POST.md`
 
-### Engagement Techniques
-- Ask rhetorical questions to involve readers
-- Use examples and case studies
-- Include relevant statistics or data
-- Provide actionable takeaways
+## Workflow: Improving Existing Content
 
-## Formatting Best Practices
+When asked to "improve" or "review" a post:
 
-### Headings and Subheadings
-- Use H1 for the main title
-- Use H2 for main sections
-- Use H3 for subsections
-- Keep heading text descriptive and keyword-rich
+1.  **Audit Structure**: Check against the "Critical Constraints" and "Structure" above.
+2.  **Check Formatting**: Ensure headers are hierarchical (no H1 in body) and code blocks are clear.
+3.  **Enhance Features**: Suggest adding Callouts (`{: .prompt-tip }`) or Mermaid diagrams where they add value.
+4.  **Optimize**: Check for keyword usage and sentence length.
+5.  **Validate**: Run `python3 ./tools/validate_blog_post.py <path>` to ensure compliance.
 
-### Content Elements
-- Use bullet points and numbered lists for clarity
-- Include relevant images with proper alt text
-- Add internal links to related content
-- Use blockquotes for important quotes or highlights
+## Available Resources
 
-### Readability
-- Keep average sentence length under 20 words
-- Use active voice instead of passive voice
-- Break up large blocks of text
-- Use white space effectively
-
-## SEO Optimization Tips
-
-### Keyword Strategy
-- Research primary and secondary keywords
-- Include keywords naturally in titles, headings, and content
-- Use keywords in meta descriptions
-- Avoid keyword stuffing
-
-### Technical Elements
-- Optimize image file names and alt text
-- Use proper heading structure (H1, H2, H3)
-- Include internal links to related content
-- Ensure fast loading times
-
-## Content Creation Process
-
-1. **Research**: Understand your audience and topic thoroughly
-2. **Outline**: Create a structured outline with main points
-3. **Draft**: Write the initial version focusing on content flow
-4. **Review**: Check for clarity, grammar, and SEO
-5. **Optimize**: Apply formatting and SEO improvements
-6. **Publish**: Prepare for publication with proper metadata
-
-## Additional Resources
-
-### Reference Files
-- **`references/structure-guidelines.md`** - Detailed structure guidelines
-- **`references/style-tips.md`** - Writing style and tone recommendations
-- **`references/seo-best-practices.md`** - SEO optimization techniques
-
-### Examples
-- **`examples/blog-outline-template.md`** - Template for creating blog outlines
-- **`examples/seo-optimized-post.md`** - Example of SEO-optimized blog post
+*   **`examples/blog-outline-template.md`**: Standard structure template.
+*   **`examples/seo-optimized-post.md`**: Example of a fully polished post.
+*   **`references/structure-guidelines.md`**: Deep dive on post components.
+*   **`references/style-tips.md`**: Writing style guide.
+*   **`references/seo-best-practices.md`**: SEO checklist.
+*   **`tools/validate_blog_post.py`**: Python script to validate filename, front matter, and structure.
