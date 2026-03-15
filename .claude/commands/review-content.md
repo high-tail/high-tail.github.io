@@ -3,35 +3,31 @@ name: review-content
 description: Analyze existing blog content for improvements in structure, style, and SEO
 ---
 
-To review existing blog content, follow these steps:
+Review an existing blog post against the project's standards:
 
-1. **Receive Content**: Get the blog post content to analyze from the user.
+1. **Read the skill guide** at `.claude/skills/blog-writing-guide/SKILL.md`.
 
-2. **Analyze Structure**: Check if the content follows proper blog post structure using the Blog Writing Guide skill.
+2. **Read the target post** from `_posts/`.
 
-3. **Evaluate Style**: Assess writing style, tone, and readability.
+3. **Run validation**: `python3 .claude/skills/blog-writing-guide/tools/validate_blog_post.py _posts/YOUR_POST.md`
 
-4. **Check SEO**: Review for keyword usage, meta elements, and technical SEO factors.
+4. **Analyze** against these criteria:
+   - **Front matter**: All required fields present? `description` under 160 chars? `title` under 60 chars?
+   - **Structure**: Does it follow the standard section flow? (Objective → Prerequisites → Overview → etc.)
+   - **Headings**: H2 for sections, no H1 in body, logical hierarchy?
+   - **Theme features**: Callouts used? Environment table present? Mermaid diagrams where useful?
+   - **Series**: If part of a series, are all parts linked?
+   - **SEO**: Keywords in H2 headers and first paragraph?
+   - **Style**: Active voice? Short paragraphs? Technical terms linked?
 
-5. **Provide Recommendations**: Offer specific suggestions for improvement.
+5. **Report** findings as: strengths, issues (with severity), and actionable suggestions.
 
-## Usage Examples
+## Usage
 
-- `/review-content "My existing blog post about Jekyll"`
-- `/review-content --file="posts/2023-01-01-jekyll-tips.md"`
+- `/review-content _posts/2025-04-27-mariadb-galera-cluster-final.md`
+- `/review-content _posts/2025-03-01-mariadb-galera-cluster-proxysql.md --focus "seo"`
 
-## Command Arguments
+## Arguments
 
-- `content` (required): The blog post content to review (can be pasted directly or file path)
-- `--file` (optional): Path to a file containing the blog post content
-- `--focus` (optional): Specific area to focus on (structure, style, SEO)
-
-## Implementation Notes
-
-When using this command:
-1. Apply the Blog Writing Guide skill to evaluate content quality
-2. Check for proper heading hierarchy and content organization
-3. Assess writing style and readability
-4. Review SEO elements including keywords and meta tags
-5. Provide actionable improvement suggestions
-6. Highlight strengths as well as areas for improvement
+- `content` (required): Path to the blog post file in `_posts/`
+- `--focus` (optional): Specific area to focus on (structure, style, seo, all)

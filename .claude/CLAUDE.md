@@ -1,94 +1,90 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
-This is a Jekyll-based static site generator for a personal blog hosted on GitHub Pages. 
-The site uses the Chirpy theme and is configured for local development with Docker Compose.
+Jekyll-based personal blog hosted on GitHub Pages using the Chirpy theme. Local development uses Docker Compose.
 
-## Key Technologies
+## Development
 
-- Jekyll static site generator (Ruby-based)
-- Chirpy theme (jekyll-theme-chirpy)
-- GitHub Pages deployment
-- Docker Compose for local development
-
-## Development Setup
-
-### Docker-based Development (Recommended)
-
-The preferred method for local development is using Docker Compose:
-
-1. Build and run the site:
-   ```
-   docker compose up
-   ```
-
-2. The site will be available at http://localhost:4000
-
-### Docker Commands
-
-- `docker compose up` – build and start the Jekyll server with auto-reload
-- `docker compose down` – stop and remove containers
-- `docker compose run --rm app bundle exec jekyll build` – build the site
-- `docker compose exec app bundle exec jekyll serve` – run server in container
-
-## Site Structure
-
-- `_posts/` - Blog posts in Jekyll format
-- `_tabs/` - Tab pages (about, archives, categories, tags)
-- `_config.yml` - Main configuration
-- `Gemfile` - Ruby gem dependencies
-- `Dockerfile` - Container configuration
-- `compose.yml` - Docker Compose configuration
+```bash
+docker compose up          # Start dev server at http://localhost:4000 (auto-reload)
+docker compose down        # Stop containers
+docker compose build       # Rebuild after Gemfile changes
+```
 
 ## Deployment
 
-The site is deployed to GitHub Pages. Configuration in `_config.yml` specifies the base URL and other deployment settings.
+Pushes to `main` trigger automatic deployment via `.github/workflows/jekyll-gh-pages.yml`:
+- Builds with `bundle exec jekyll b` in production mode (Ruby 3.3)
+- Deploys to GitHub Pages at https://high-tail.github.io
 
-## Architecture
+## Site Structure
 
-- Built with Chirpy theme providing responsive design and dark/light mode
-- Uses Jekyll for static site generation
-- Docker containerizes the Jekyll environment
-- Posts use Markdown format with YAML front matter
+```
+_posts/           Blog posts (YYYY-MM-DD-kebab-case-title.md)
+_tabs/            Tab pages (about, archives, categories, tags)
+_config.yml       Main site configuration
+_data/            Site data files
+_plugins/         Custom Jekyll plugins
+assets/img/       Images referenced in posts
+compose.yml       Docker Compose configuration
+Dockerfile        Container configuration (Ruby 3.3)
+.claude/skills/   Blog writing skill and tools
+.claude/agents/   Agent definitions (blog-post-generator, content-improver, content-organizer)
+.claude/commands/ Slash commands (create-post, generate-content, review-content)
+.claude/rules/    Project rules (file naming, directory structure)
+```
 
 ## Rules & Guidelines
 
 Strictly adhere to the rules defined in `.claude/rules/`:
 - **Files**: See `.claude/rules/files.md` for naming conventions (`YYYY-MM-DD-...`) and directory structures (`_posts/`, `assets/img/`).
 
+## Blog Post Requirements
+
+- **Filenames**: `_posts/YYYY-MM-DD-kebab-case-title.md`
+- **Front Matter**: Must include `title`, `date`, `description`, `comments`, `categories`, and `tags`.
+- **Images**: Store in `assets/img/`.
+- **Headings**: Use `##` (H2) for body sections — Chirpy renders `title` as H1.
+- **Theme Features**:
+  - Callouts: `{: .prompt-tip }`, `{: .prompt-info }`, `{: .prompt-warning }`, `{: .prompt-danger }`
+  - Diagrams: `mermaid: true` in front matter for Mermaid diagrams
+  - Footnotes: `[^fn-nth-1]` for source repos and references
+
+### Validation
+
+```bash
+python3 .claude/skills/blog-writing-guide/tools/validate_blog_post.py _posts/YOUR_POST.md
+```
+
 ## Available Commands
 
-- `/create-post "topic" [--audience "target"] [--structure "type"]`
-  Create a new blog post draft with the correct filename and Front Matter.
-- `/generate-content "prompt" [--section "intro|body|conclusion"]`
+- `/create-post "topic" [--audience "target"] [--structure "type"] [--series "name"]`
+  Create a new blog post draft with correct filename and front matter.
+- `/generate-content "prompt" [--section "objective|prerequisites|overview|implementation|verification|conclusion"]`
   Generate specific sections for a post.
-- `/review-content "content_or_file" [--focus "structure|style|seo"]`
+- `/review-content "path" [--focus "structure|style|seo"]`
   Analyze existing posts for improvements.
+
+## Content Conventions
+
+- Posts are primarily technical (DevOps, databases, infrastructure) and typically form multi-part series.
+- Use Mermaid `architecture-beta` syntax for system diagrams (not basic flowcharts).
+- Standard section flow: Objective → Prerequisites → Overview → Implementation → Verification → Conclusion → Footnotes.
+
+## Gotchas
+
+- **Timezone**: Front matter `date` must use `+0900` (JST).
+- **Permalinks**: `_config.yml` sets `/posts/:title/`, so series links use `https://high-tail.github.io/posts/slug-name` — not date-based URLs.
+- **`Gemfile.lock` is gitignored**: GitHub Pages uses its own gems. Don't commit lock changes.
+- **No test suite**: No `bundle exec rake` or similar. Post validation is via the Python script only.
+- **Docker service name**: The compose service is `app` (e.g., `docker compose exec app ...`).
 
 ## Available Agents
 
-- **`@blog-post-generator`**
-  *Expert at writing full posts.*
-  Usage: "Write a blog post about X"
-  Tools: Read, Write, Grep
-- **`@content-improver`**
-  *Expert at auditing and refining content.*
-  Usage: "Improve this draft"
-  Tools: Read, Grep
-- **`@content-organizer`**
-  *Expert at structuring messy notes.*
-  Usage: "Organize these notes into a post"
-  Tools: Read, Grep
-
-## Project Constraints
-
-- **Filenames**: Blog posts MUST be in `_posts/` and follow `YYYY-MM-DD-kebab-case-title.md`.
-- **Front Matter**: MUST include `title`, `date`, `categories`, and `tags`.
-- **Images**: Store in `assets/img/`.
-- **Theme Features**:
-  - Use `{: .prompt-tip }`, `{: .prompt-info }`, `{: .prompt-warning }`, `{: .prompt-danger }` for callouts.
-  - Use `mermaid: true` in front matter for diagrams.
-
+- **`@blog-post-generator`** — Write full posts from scratch.
+  Tools: Read, Write, Grep, Glob
+- **`@content-improver`** — Audit and fix existing content.
+  Tools: Read, Write, Grep, Glob
+- **`@content-organizer`** — Turn messy notes into structured posts.
+  Tools: Read, Write, Grep, Glob

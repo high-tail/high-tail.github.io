@@ -1,58 +1,51 @@
-# Blog Writing Style and Tone Tips
+# Writing Style Guide
 
-## Voice and Personality
+## Voice & Tone
 
-### Conversational Tone
-- Write as if speaking directly to the reader
-- Use contractions naturally (don't be afraid of "I'm", "you're")
-- Include personal anecdotes when relevant
-- Keep the tone approachable yet professional
+This blog uses a professional but approachable voice:
+- Speak directly to the reader: "we'll set up", "you can connect"
+- Use contractions naturally: "we'll", "you're", "don't"
+- Be concise — explain what's needed, skip what's obvious
+- When introducing a technology, link to its official docs on first mention
 
-### Consistency
-- Maintain consistent terminology throughout
-- Use the same voice across all blog posts
-- Match your brand's personality and values
-- Ensure tone aligns with your target audience
+## Formatting Rules
 
-## Sentence Structure
+### Paragraphs
+- Max 3–5 sentences per paragraph
+- Use active voice over passive
+- Lead with the key information, then elaborate
 
-### Variety
-- Mix short and long sentences
-- Vary sentence beginnings (start with different elements)
-- Use active voice over passive voice
-- Include rhetorical questions for engagement
+### Technical Terms
+- Link to official documentation on first use: `[Prometheus](https://prometheus.io/docs/introduction/overview/)`
+- For tools with specific concepts (e.g., "Galera Cluster", "write splitting"), define briefly on first use
 
-### Clarity
-- Avoid unnecessary complexity
-- Use simple, direct language
-- Define technical terms when first introduced
-- Break up complex ideas into digestible chunks
+### Code References
+- Use backticks for filenames, commands, config keys: `` `_config.yml` ``, `` `docker-compose up` ``
+- Use bold backticks for filenames in section headers: `#### **\`compose.yml\`**`
 
-## Grammar and Mechanics
+## Blog-Specific Patterns
 
-### Common Mistakes to Avoid
-- Run-on sentences
-- Dangling modifiers
-- Misplaced commas
-- Incorrect verb tenses
-- Subject-verb disagreement
+### Numbered Lists for Capabilities
+When describing what a tool provides, use a brief numbered list:
+```markdown
+Prometheus provides three main things:
+1. Metrics Collection
+2. Time-Series Database
+3. Querying and Alerting
+```
 
-### Best Practices
-- Proofread for grammar and spelling
-- Read aloud to catch awkward phrasing
-- Use tools like Grammarly or Hemingway Editor
-- Keep a style guide for your blog
+### Verification Checklists
+Use checkbox syntax for verification steps:
+```markdown
+- [x] Does the sidebar show your avatar?
+- [x] Are the title and tagline correct?
+```
 
-## Audience Considerations
-
-### Understanding Your Readers
-- Know their level of expertise
-- Consider their goals and challenges
-- Match your language to their preferences
-- Address their specific pain points
-
-### Tone Adjustments
-- Technical audiences: More formal, detailed
-- General audiences: Conversational, accessible
-- Industry professionals: Professional, authoritative
-- Beginners: Friendly, explanatory
+### Service URL Tables
+When multiple services are running, present access URLs in a table:
+```markdown
+| Service    | WebUI                      |
+| ---------- | -------------------------- |
+| Grafana    | http://localhost:3000       |
+| Prometheus | http://localhost:9090/query |
+```

@@ -1,49 +1,99 @@
-# Blog Post Outline Template
+# Blog Post Template
 
-## Front Matter
-```yaml
+Copy this template when starting a new post. Replace placeholders with actual content.
+
+```markdown
 ---
-title: [Post Title]
-date: [YYYY-MM-DD HH:MM:SS +TZ]
-description: [Short description]
+title: "[Primary Keyword] [Descriptive Title]"
+date: YYYY-MM-DD HH:MM:SS +0900
+description: "[Compelling summary under 160 chars]"
 comments: true
-mermaid: [true|false]
-categories: [Main Category, Sub Category]
-tags: [tag1, tag2]
+mermaid: true
+categories: [Main, Sub]
+tags: [tag1, tag2, tag3]
 ---
-```
 
 ## Objective
-- Goal: [What this post will achieve]
-- Context: [How this fits into larger goals or series]
-- Series Links: [If applicable, link to previous parts]
+
+[1-2 sentences: what this post achieves and why it matters.]
+
+<!-- If part of a series, uncomment:
+This is part N of the series:
+1. [Part 1 Title](https://high-tail.github.io/posts/part-1-slug)
+2. [Part 2 Title](https://high-tail.github.io/posts/part-2-slug) ← this post
+-->
 
 ## Prerequisites
-- Tools required: [List of software/versions]
-- Knowledge required: [What reader needs to know]
-- Environment: [Use `{: .prompt-tip }` to list specific versions used]
+
+- [Required tool or knowledge]
+- [Required tool or knowledge]
+
+> My Environment
+>
+> | Software | Version |
+> | :------- | :------ |
+> | [Tool]   | [X.Y.Z] |
+>
+{: .prompt-tip }
 
 ## Overview
-- Concept 1: [Explanation of key technology]
-- Concept 2: [Explanation of key technology]
-- Architecture: [Use `{: .prompt-info }` and Mermaid diagram to visualize]
 
-## Implementation / Main Content
-- File Structure: [Tree view of changed files]
-- Step 1: [Configuration update with code block]
-- Step 2: [Script creation with code block]
-- Step 3: [Dockerfile update with code block]
+### [Key Concept 1]
 
-## Usage / How to Start
-- Build commands: [docker-compose build, etc.]
-- Run commands: [docker-compose up, etc.]
-- Verification: [How to check if it works, e.g., URLs to visit]
+[Brief explanation with link to official docs.]
 
-## Conclusion / Completed Plan
-- Summary: [Recap of what was built]
-- Checklist: [Use `- [x]` to show completed tasks]
-- Future work: [What comes next]
+### [Key Concept 2]
 
-## Links & Footnotes
-- References: [Links to official docs]
-- Source Code: [Link to GitHub repo]
+[Brief explanation.]
+
+> Architecture
+> ```mermaid
+> architecture-beta
+>     group system[System Name]
+>     service svc1(server)[Service 1] in system
+>     service svc2(database)[Service 2] in system
+>     svc1:R -- L:svc2
+> ```
+{: .prompt-info }
+
+## Implementation
+
+### File Structure[^fn-nth-1]
+
+```
+.
+├── file1.yml      # Update
+└── directory/
+    ├── new-file/  # New
+    └── config.cfg # Update
+```
+
+### [Step or File Name]
+
+[Explanation of what this step does.]
+
+```yaml
+# Code block with inline comments
+key: value  # Explain this line
+```
+
+## How to Start
+
+```bash
+docker-compose build
+docker-compose up -d
+```
+
+| Service | WebUI |
+| ------- | ----- |
+| [Name]  | http://localhost:[port] |
+
+## Completed Plan
+
+- [x] [What was accomplished]
+- [x] [What was accomplished]
+
+## Links
+
+[^fn-nth-1]: [Repository Name](https://github.com/...) - Description of the source code.
+```

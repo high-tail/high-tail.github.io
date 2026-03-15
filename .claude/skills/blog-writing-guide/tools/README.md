@@ -1,19 +1,41 @@
-# Blog Writing Skill Evaluation
+# Validation Tool
 
-This directory contains the evaluation framework for the `blog-writing-guide` skill.
+## validate_blog_post.py
 
-## Structure
-- **`test_cases.json`**: A list of prompts and expected criteria for testing the skill.
-- **`validate_blog_post.py`**: A Python script to validate generated posts.
+Validates blog posts against the project's standards.
 
-## How to Run an Evaluation
+### Usage
 
-1.  **Select a Test Case**: Open `test_cases.json` and pick a prompt (e.g., "Write a blog post about setting up MariaDB...").
-2.  **Generate Content**: Ask Gemini (or your agent) to write the post using the skill.
-    *   *Example Command*: "Using the blog-writing-guide, write a post about setting up MariaDB."
-3.  **Save the File**: Save the output to `_posts/YYYY-MM-DD-your-title.md`.
-4.  **Run Validation**:
-    ```bash
-    python3 validate_blog_post.py _posts/YYYY-MM-DD-your-title.md
-    ```
-5.  **Review Results**: The script will Pass or Fail based on the criteria. Update the `SKILL.md` if the agent consistently fails a specific check.
+```bash
+python3 .claude/skills/blog-writing-guide/tools/validate_blog_post.py _posts/YYYY-MM-DD-your-post.md
+```
+
+### What It Checks
+
+| Check | Severity | Details |
+| ----- | -------- | ------- |
+| Filename format | FAIL | Must match `YYYY-MM-DD-kebab-case.md` |
+| Required front matter | FAIL | `title`, `date`, `categories`, `tags` must be present |
+| Recommended front matter | FAIL | `description`, `comments` should be present |
+| Description length | FAIL | Must be under 160 characters |
+| Title length | FAIL | Recommended under 60 characters |
+| H1 in body | FAIL | Chirpy uses `title` as H1 — use `##` for body sections |
+| Image paths | FAIL | Must use `/assets/img/` prefix |
+| Callout usage | SUGGEST | Recommends adding `{: .prompt-tip }` etc. if none found |
+| Footnotes | SUGGEST | Recommends adding footnotes for source references |
+
+### Example Output
+
+```
+Validating _posts/2025-04-27-my-post.md...
+
+[PASS] Filename: Filename format correct
+[PASS] Front Matter: Front matter looks good
+[PASS] Content: Content structure looks good
+
+[SUGGESTIONS]
+  - Consider adding footnotes for source references
+
+========================================
+SUCCESS: Post meets all requirements!
+```

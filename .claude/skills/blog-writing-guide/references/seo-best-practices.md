@@ -1,90 +1,39 @@
-# SEO Best Practices for Blog Posts
+# SEO Best Practices for This Blog
 
-## Keyword Research and Strategy
+## Front Matter SEO Checklist
 
-### Primary Keywords
-- Identify main topics your blog post addresses
-- Research search volume and competition
-- Select keywords that match user intent
-- Include long-tail variations for specificity
+These are the fields that directly affect search engine visibility:
 
-### Secondary Keywords
-- Support your primary keywords naturally
-- Target related topics and phrases
-- Use keywords in subheadings and body text
-- Avoid keyword stuffing
+| Field | Requirement | Example |
+| ----- | ----------- | ------- |
+| `title` | Primary keyword near start, under 60 chars | `"Setting Up Prometheus Monitoring for MariaDB"` |
+| `description` | Compelling summary, under 160 chars | `"Step-by-step guide to monitoring MariaDB Galera Cluster with Prometheus and Grafana using Docker Compose"` |
+| `categories` | 1–2 broad groupings | `[Tech, Monitoring]` |
+| `tags` | 3–5 specific lowercase topics | `[prometheus, grafana, mariadb, docker]` |
 
-## On-Page SEO Elements
+## In-Content SEO
 
-### Front Matter Optimization (Crucial)
-- **`title`**: Primary keyword near the start. < 60 chars.
-- **`description`**: This is your meta description. Summarize the post with keywords. < 160 chars.
-- **`categories`**: Broad grouping (e.g., `Tech`, `Tutorial`). Helps site structure.
-- **`tags`**: Specific topics (e.g., `docker`, `jekyll`, `troubleshooting`). Improves internal search.
+### Keywords
+- Include the primary keyword in the first H2 heading and the first paragraph
+- Use related keywords naturally in subsequent H2 headings
+- Don't force keywords — readability comes first
 
-### Title Optimization
-- Include primary keyword near the beginning
-- Keep titles under 60 characters for optimal display
-- Make titles compelling and click-worthy
-- Use power words to increase engagement
-
-### Meta Descriptions
-- Write compelling summaries (under 160 characters)
-- Include primary keyword naturally
-- Include a clear call-to-action
-- Reflect the content accurately
-
-### Header Structure
-- Use H1 for the main title
-- Use H2 for main sections
-- Use H3 for subsections
-- Include keywords in headers
-- Maintain logical hierarchy
-
-## Content Optimization
+### Headings
+- H2 (`##`) for main sections — these are picked up by search engines
+- H3 (`###`) for subsections within a section
+- Make headings descriptive: "Configuring HAProxy for Load Balancing" not "Step 3"
 
 ### Internal Linking
-- Link to related content within your site
-- Use descriptive anchor text
-- Link to authoritative sources when relevant
-- Create a logical content network
+- Link to other posts in the same series
+- Link to related posts on the same blog when relevant
+- Use descriptive anchor text (not "click here")
 
-### Image Optimization
-- Use descriptive file names with keywords
-- Add alt text with relevant keywords
-- Compress images for fast loading
-- Include captions when appropriate
+### Images
+- Use descriptive filenames: `mariadb-cluster-architecture.png` not `screenshot1.png`
+- Always include alt text: `![MariaDB Galera Cluster architecture diagram](/assets/img/...)`
+- Store in `assets/img/`
 
 ### Content Length
-- Aim for 1,000-2,000+ words for comprehensive coverage
-- Ensure content is thorough and valuable
-- Balance depth with readability
-- Update content regularly for freshness
-
-## Technical SEO
-
-### Page Speed
-- Optimize images and code
-- Use caching where possible
-- Minimize HTTP requests
-- Ensure mobile responsiveness
-
-### Mobile Optimization
-- Ensure content is readable on mobile
-- Use responsive design
-- Test on various devices
-- Optimize for touch interactions
-
-## Analytics and Improvement
-
-### Tracking Performance
-- Monitor page views and bounce rates
-- Track time on page
-- Analyze user behavior
-- Identify content gaps
-
-### Continuous Improvement
-- Update content based on performance data
-- Refresh outdated information
-- Add new insights and examples
-- Respond to reader feedback
+- Technical tutorials: aim for 800–2000 words
+- Deep dives: can go longer if the content warrants it
+- Every section should add value — don't pad for length
